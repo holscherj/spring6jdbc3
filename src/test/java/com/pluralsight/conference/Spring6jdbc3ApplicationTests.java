@@ -19,9 +19,11 @@ class Spring6jdbc3ApplicationTests {
         RestTemplate restTemplate = new RestTemplate();
 
         Speaker speaker = new Speaker();
-        speaker.setName("John H");
+        speaker.setName("Jark H");
 
-        restTemplate.put("http://localhost:8080/speaker", speaker);
+        speaker = restTemplate.postForObject("http://localhost:8080/speaker", speaker, Speaker.class);
+
+        System.out.println(speaker.getName());
     }
 
     @Test
